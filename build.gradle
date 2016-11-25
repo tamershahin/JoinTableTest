@@ -1,0 +1,55 @@
+group 'JoinTableTest'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${libs_version_public_spring_boot}")
+        classpath("org.jsondoc:spring-boot-starter-jsondoc:${libs_version_public_json_doc}")
+        classpath("mysql:mysql-connector-java:${libs_version_public_mysql_connector_java}")
+        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${libs_version_public_gradle_pitest_plugin}")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    // spring dependencies
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-undertow')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+    // public dependencies
+    runtime('mysql:mysql-connector-java')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.hateoas:spring-hateoas:${libs_version_public_spring_hateoas}")
+    compile("org.jsondoc:spring-boot-starter-jsondoc:${libs_version_public_json_doc}")
+    compile("org.projectlombok:lombok:${libs_version_public_lombok}")
+    compile("org.modelmapper:modelmapper:${libs_version_public_modelmapper}")
+
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
