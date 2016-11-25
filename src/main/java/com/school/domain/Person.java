@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "abstract_person",schema = "school_service")
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Person {
+public class Person {
 
     @Id
     @GeneratedValue
@@ -24,5 +24,9 @@ public abstract class Person {
     @Getter
     @Setter
     String name;
+
+    @Column(name = "person_type", nullable = false)
+    @Getter@Setter
+    String personType;
 
 }
