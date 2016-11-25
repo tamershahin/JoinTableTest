@@ -1,16 +1,16 @@
 package com.school.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@DiscriminatorValue("TEACHER")
 @Table(name = "teacher")
 @PrimaryKeyJoinColumn(name = "teacher_id", referencedColumnName = "person_id")
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Teacher extends Person{
 
     @Getter

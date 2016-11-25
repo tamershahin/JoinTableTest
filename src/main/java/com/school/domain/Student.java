@@ -5,8 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("student")
-@Table(name = "student_detail",schema = "school_service")
+@DiscriminatorValue("STUDENT")
+@Table(name = "student_detail")
 @PrimaryKeyJoinColumn(name = "student_id", referencedColumnName = "person_id")
 @Builder(toBuilder = true)
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class Student extends Person {
     @Setter
     String email;
 
-    @Column(length = 32, nullable = false)
+    @Column(length = 32, nullable = true)
     @Getter
     @Setter
     String className;

@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "person_type")
-@Table(name = "abstract_person",schema = "school_service")
+@DiscriminatorColumn(name = "person_type", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "abstract_person")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
@@ -25,7 +25,7 @@ public class Person {
     @Setter
     String name;
 
-    @Column(name = "person_type", nullable = false)
+    @Column(name = "person_type", nullable = false, insertable = false, updatable = false)
     @Getter@Setter
     String personType;
 
